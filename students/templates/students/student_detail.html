@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ student.first_name }} {{ student.last_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'students/css/styles.css' %}">
+    <script src="{% static 'students/js/scripts.js' %}" defer></script>
+</head>
+<body>
+    <h1>{{ student.first_name }} {{ student.last_name }}</h1>
+    <p><strong>Admission Number:</strong> {{ student.admission_number }}</p>
+    <p><strong>Date of Birth:</strong> {{ student.date_of_birth }}</p>
+    <p><strong>Date of Admission:</strong> {{ student.date_of_admission }}</p>
+    {% if student.image %}
+        <img src="{{ student.image.url }}" alt="Student Image" style="width:200px;height:auto;">
+    {% endif %}
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+    <a href="{% url 'home' %}">Home</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'students/css/styles.css' %}">
+    <script src="{% static 'students/js/scripts.js' %}" defer></script>
+</head>
+<body>
+    <h1>Student List</h1>
+    <ul>
+        {% for student in students %}
+            <li>
+                <a href="{% url 'student_detail' student.pk %}">
+                    {{ student.first_name }} {{ student.last_name }} - {{ student.admission_number }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No students found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Home</a>
+</body>
+</html>
